@@ -40,7 +40,9 @@ This will add the config to `config/username-wrangler.php`
 
 
 ```bash
-$ php artisan vendor:publish --provider="Simtabi\UsernameWrangler\ServiceProvider"
+$ php artisan vendor:publish --tag=username-wrangler:config
+$ php artisan vendor:publish --tag=username-wrangler:assets
+$ php artisan vendor:publish --tag=username-wrangler:views
 ```
 
 ## Quickstart 
