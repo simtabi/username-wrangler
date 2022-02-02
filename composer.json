@@ -1,0 +1,40 @@
+{
+    "name": "simtabi/username-wrangler",
+    "description"       : "A Laravel package to help with automatic username generation and suggestions for any given user model.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Imani Manyara",
+            "email": "imani@simtabi.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0|^8.1",
+        "ext-mbstring": "*",
+        "illuminate/support": ">=5.5"
+    },
+    "require-dev": {
+        "orchestra/testbench": "*",
+        "psy/psysh": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Simtabi\\UsernameWrangler\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Simtabi\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Simtabi\\UsernameWrangler\\Providers\\UsernameWranglerServiceProvider"
+            ],
+            "aliases": {
+                "UsernameWrangler": "Simtabi\\UsernameWrangler\\Facades\\UsernameWranglerFacade"
+            }
+        }
+    }
+}
