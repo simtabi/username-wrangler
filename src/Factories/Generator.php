@@ -5,11 +5,11 @@ namespace Simtabi\UsernameWrangler\Factories;
 use Illuminate\Support\Arr;
 use Simtabi\UsernameWrangler\Drivers\Suggester\BaseSuggesterDriver;
 use Simtabi\UsernameWrangler\Exceptions\GeneratorException;
-use Simtabi\UsernameWrangler\Traits\LoadsUsernameConfig;
+use Simtabi\UsernameWrangler\Traits\LoadsConfig;
 
 class Generator
 {
-    use LoadsUsernameConfig;
+    use LoadsConfig;
 
     /**
      * The driver to use to convert.

@@ -5,8 +5,16 @@ namespace Simtabi\UsernameWrangler\Traits;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 
-trait LoadsUsernameConfig
+trait LoadsConfig
 {
+
+    /**
+     * Sets the user model to be used
+     *
+     * @var Model
+     */
+    protected Model $usernameModel;
+
     /**
      * Loaded config.
      *
@@ -27,13 +35,19 @@ trait LoadsUsernameConfig
      * @param Model $model
      * @return object|null
      */
-    public function model(Model $model): ?object
+    public function setUsernameModel(Model $model): ?object
     {
-        try {
-            return new $model();
-        } catch (Exception $exception) {
-            return null;
-        }
+        $this->usernameModel = new $model();
+
+        return $this;
+    }
+
+    /**
+     * @return Model
+     */
+    public function getUsernameModel(): Model
+    {
+        return $this->usernameModel;
     }
 
     /**

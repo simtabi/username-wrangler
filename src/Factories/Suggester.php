@@ -70,13 +70,13 @@ class Suggester implements SuggesterContract
      */
     public function driver(?string $driver = null): SuggesterDriver
     {
-        $driver ??= $this->driver ?? config('username_suggester.default', 'increment');
+        $driver ??= $this->driver ?? config('username-wrangler.suggester.default', 'increment');
 
         if(class_exists($driver)) {
             return new $driver($this->generator());
         }
 
-        $driver = config('username_suggester.drivers')[$driver];
+        $driver = config('username-wrangler.suggester.drivers')[$driver];
 
         if(class_exists($driver)) {
             return new $driver($this->generator());
@@ -109,7 +109,7 @@ class Suggester implements SuggesterContract
      */
     protected function getGeneratorConfig(): array
     {
-        $config = $this->generatorConfig ?? config('username_suggester.generatorConfig', []);
+        $config = $this->generatorConfig ?? config('username-wrangler.suggester.generatorConfig', []);
 
         // Config must have unique set to false, or it will not be able to generate a username using this package.
         return array_merge($config, ['unique' => false]);

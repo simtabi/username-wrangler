@@ -64,7 +64,7 @@ abstract class BaseSuggesterDriver implements SuggesterDriver
      */
     public function isUnique(Model $model, string $username): bool
     {
-        return $this->generator->model($model)->isUsernameUnique($username) && !$this->suggestions->contains($username);
+        return $this->generator->getUsernameModel()->isUsernameUnique($username) && !$this->suggestions->contains($username);
     }
 
     /**
@@ -81,7 +81,7 @@ abstract class BaseSuggesterDriver implements SuggesterDriver
      */
     public function getAmount(): int
     {
-        return $this->amount ?? config('username_suggester.amount', 3);
+        return $this->amount ?? config('username-wrangler.suggester.amount', 3);
     }
 
     /**

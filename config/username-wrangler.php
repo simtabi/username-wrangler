@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\User;
 use Simtabi\UsernameWrangler\Drivers\Suggester\IncrementDriver;
 use Simtabi\UsernameWrangler\Drivers\Suggester\RandomDriver;
 use Simtabi\UsernameWrangler\Drivers\Generator\EmailDriver;
@@ -130,17 +129,17 @@ return [
         /*
          * The default driver to use
          */
-        'default' =>  'increment',
+        'default'         =>  'increment',
 
         /*
          * The amount of suggestions to generate
          */
-        'amount' => 3,
+        'amount'          => 3,
 
         /*
          * Map of the drivers and their classes
          */
-        'drivers' => [
+        'drivers'         => [
             'increment' => IncrementDriver::class,
             'random'    => RandomDriver::class,
         ],

@@ -7,11 +7,11 @@ use Illuminate\Support\Str;
 use Simtabi\UsernameWrangler\Exceptions\GeneratorException;
 use Simtabi\UsernameWrangler\Exceptions\UsernameTooLongException;
 use Simtabi\UsernameWrangler\Exceptions\UsernameTooShortException;
-use Simtabi\UsernameWrangler\Traits\LoadsUsernameConfig;
+use Simtabi\UsernameWrangler\Traits\LoadsConfig;
 
 abstract class BaseDriver
 {
-    use LoadsUsernameConfig;
+    use LoadsConfig;
 
     /**
      * Field to access on the model.
@@ -251,14 +251,14 @@ abstract class BaseDriver
      *
      * @return string
      */
-    public function makeUnique(Model $model, string $text): string
+    public function makeUnique(string $text): string
     {
-        if ($this->getConfig('unique') && $this->model($model) && method_exists($this->model($model), 'findSimilarUsernames')) {
-            if (method_exists($this->model($model), 'isUsernameUnique') && $this->model($model)->isUsernameUnique($text)) {
+        if ($this->getConfig('unique') && $this->getUsernameModel() && method_exists($this->getUsernameModel(), 'findSimilarUsernames')) {
+            if (method_exists($this->getUsernameModel(), 'isUsernameUnique') && $this->getUsernameModel()->isUsernameUnique($text)) {
                 return $text;
             }
 
-            if (($similar = count($this->model($model)->findSimilarUsernames($text))) > 0) {
+            if (($similar = count($this->getUsernameModel()->findSimilarUsernames($text))) > 0) {
                 return $text.$this->getConfig('separator').$similar;
             }
         }
