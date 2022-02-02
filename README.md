@@ -1,4 +1,4 @@
-#Username wrangler — A Laravel Username Generator and Suggester
+##Username wrangler — A Laravel Username Generator and Suggester
 
 ### 1. Generator
 Easily generate, and suggest unique usernames for any given Laravel User Model
